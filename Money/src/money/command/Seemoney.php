@@ -27,14 +27,13 @@ class Seemoney extends PluginCommand
     {
         if (!isset($args[0])) {
             $sender->sendMessage("Usage /seemoney <playername>");
+        } elseif (mysqli_fetch_row($this->plugin->getDatabase()->query("SELECT money FROM money WHERE username='$args[0]'")) == null) {
+            $sender->sendMessage("Player with name $args[0] not found");
         } else {
             $data = mysqli_fetch_row($this->plugin->getDatabase()->query("SELECT money FROM money WHERE username='$args[0]'"));
             $sender->sendMessage("Money $args[0] is $data[0]");
-            if ($data == null) {
-                $sender->sendMessage("Player with name $args not found");
-            }
-
-            return true;
         }
+
+        return true;
     }
 }
