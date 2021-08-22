@@ -1,0 +1,6 @@
+name: Money
+main: money\Money
+version: 1.0.0
+api: "3.0.0"
+author: SandhyR
+description: "Money plugin for PocketMine-MP"
